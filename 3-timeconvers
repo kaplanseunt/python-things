@@ -1,0 +1,40 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'timeConversion' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts STRING s as parameter.
+#
+
+def timeConversion(s):
+    # Write your code here
+    time = s[:-2]     #son 2 elemana kadar al
+    period = s[-2:]   #son 2 elemani al
+    
+    if period == "PM" and time[:2] != "12":
+        time = str(12 + int(time[:2]))   +    time[2:]
+    
+    elif period == "AM" and time[:2] == "12":
+        time = "00" + time[2:]
+
+    return time
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    s = input()
+    result = timeConversion(s)
+    fptr.write(result + '\n')
+    fptr.close()
+    
+    #fptr (file pointer) terimi, bir dosya ile etkileşimde bulunmak için kullanılan bir işaretçi veya   
+    #referansı temsil eder. Bu özel durumda, fptr değişkeni dosyaya yazma işlemleri için kullanılır.
+    #ilk olarak, şu satırda fptr adlı bir dosya işaretçisi oluşturulur: 
+    # fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
