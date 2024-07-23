@@ -6,77 +6,64 @@ A mismatched word is a word that is only in one string but not the other.
 Add mismatched words from the first string before you add mismatched words from the second string in the output array.
 */
 
-
 import math
-# Add any extra import statements you may need here
-# Add any helper functions you may need here
-
-
-
 
 def return_mismatched_words(str1, str2):
+    str1 = str1.split()
+    str2 = str2.split()
+ 
+    set1 = set(str1)
+    set2 = set(str2)
   
-  str1=str1.split()
-  
-  str2=str2.split()
-  
-  
-  set1=set(str1)
-  set2=set(str2)
-  
-  set3=set1-set2
-  set4=set2-set1
-  final_lst=list(set3)+list(set4)
-  
-  print(final_lst)
-  return final_lst
-    
-    
-    
-    
-    
-# These are the tests we use to determine if the solution is correct.
-# You can add your own at the bottom.
+    set3 = set1 - set2
+    set4 = set2 - set1
+    final_lst = list(set3) + list(set4)
+    list3=list(set3)
+    return list3
 
 def printStringList(array):
-  size = len(array)
-  print('[', end='')
-  for i in range(size):
-    if i != 0:
-      print(', ', end='')
-    print(array[i], end='')
-  print(']', end='')
+    size1 = len(array)
+    print('[', end='')
+    for i in range(size1):
+        if i != 0:
+            print(', ', end='')
+        print(array[i], end='')
+    print(']', end='')
 
 test_case_number = 1
 
 def check(expected, output):
-  global test_case_number
-  expected_size = len(expected)
-  output_size = len(output)
-  result = True
-  if expected_size != output_size:
-    result = False
-  for i in range(min(expected_size, output_size)):
-    result &= (output[i] == expected[i])
-  rightTick = '\u2713'
-  wrongTick = '\u2717'
-  if result:
-    print(rightTick, 'Test #', test_case_number, sep='')
-  else:
-    print(wrongTick, 'Test #', test_case_number, ': Expected ', sep='', end='')
-    printStringList(expected)
-    print(' Your output: ', end='')
-    printStringList(output)
-    print()
-  test_case_number += 1
-    
-if __name__ == "__main__":
-  # Testcase 1
-  str1 = "Firstly this is the first string"
-  str2 = "Next is the second string" 
-  output_1 = return_mismatched_words(str1, str2)
-  expected_1 = ["Firstly", "this", "first", "Next", "second"]
-  check(expected_1, output_1)
+    global test_case_number
+    expected_size = len(expected)
+    output_size = len(output)
+    rightTick = '\u2713'
+    wrongTick = '\u2717'
+    result = True
+    if expected_size != output_size:
+        result = False
+    for i in range(min(expected_size, output_size)):
+        result &= (output[i] == expected[i])
+    if result:
+        print(rightTick, 'Test #', test_case_number, sep='')
+    else:
+        print(wrongTick, 'Test #', test_case_number, ': Expected ', sep='', end='')
+        printStringList(expected)
+        print(' Your output: ', end='')
+        printStringList(output)
+        print()
+    test_case_number += 1
+
+# Testcase 1
+str1 = "firstly this is the first string"
+print(str1)
+str2 = "Next is the second string"
+print('\n' + str2)
+expected_1 = ["firstly", "this", "first", "Next", "second"]
+print('beklenen: ', expected_1)
+output_1 = return_mismatched_words(str1, str2)
+print('gelen: ', output_1)
+check(expected_1, output_1)
+
 
   # Testcase 2
   str1 = "This is the first string"
