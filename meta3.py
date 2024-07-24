@@ -7,6 +7,7 @@ import math
 
 
 def return_missing_balanced_numbers(input):
+    print()
     lst = input.copy()
     lst.sort()
     print("Sıralanmış Liste:", lst)
@@ -22,16 +23,18 @@ def return_missing_balanced_numbers(input):
     for i in range(leng):
         count = lst.count(lst_dstnct[i])
         element_counts[lst_dstnct[i]] = count
-        print(f"{lst_dstnct[i]} elemanı {count} kez geçiyor.")
+        print(f"{lst_dstnct[i]} elemani {count} kez geciyor.")
         
         if count > max_count:
             max_count = count
             most_frequent = lst_dstnct[i]
     
-    print("En fazla geçen eleman:", most_frequent, "Sayısı:", max_count)
+    print("En fazla gecen eleman:", most_frequent, "sayisi:", max_count)
     
-    missing_counts = {element: max_count - count for element, count in element_counts.items() if element != most_frequent and max_count - count > 0}
-    
+    missing_counts = {element: max_count - count for element, 
+                      count in element_counts.items() 
+                      if element != most_frequent and max_count - count > 0}
+    print("Mevcut durum:", element_counts)
     print("Eksik Sayılar:", missing_counts)
     return missing_counts
 
