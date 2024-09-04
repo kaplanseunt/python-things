@@ -1,4 +1,4 @@
-class Solution:
+class SolutionTwoSums:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         prevMap = {}
 
@@ -23,3 +23,12 @@ for i, n in enumerate(nums):
 
 
 """
+
+class SolutionValidPandrome:
+    def isPalindrome(self, s: str) -> bool:
+        newStr = ""
+        for c in s:
+            if c.isalnum():
+                newStr +=c.lower()
+        return newStr == newStr[::-1]
+
